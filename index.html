@@ -1,145 +1,146 @@
 <!DOCTYPE html>
 <html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>Memory Card Game - Animal Adventure</title>
-    <link rel="stylesheet" href="css/styles.css">
-    <link rel="preconnect" href="https://fonts.googleapis.com">
-    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link href="https://fonts.googleapis.com/css2?family=Fredoka+One:wght@400&family=Nunito:wght@400;600;700&display=swap" rel="stylesheet">
-</head>
-<body>
+    <link rel="stylesheet" href="css/styles.css" />
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Fredoka+One:wght@400&family=Nunito:wght@400;600;700&display=swap"
+      rel="stylesheet"
+    />
+  </head>
+  <body>
     <div class="game-container">
-        <!-- Header -->
-        <header class="game-header">
-            <h1 class="game-title">🐾 Animal Memory Adventure</h1>
-            <div class="game-stats">
-                <div class="stat-item">
-                    <span class="stat-label">Stage:</span>
-                    <span id="current-stage" class="stat-value">1</span>
-                </div>
-                <div class="stat-item">
-                    <span class="stat-label">Moves:</span>
-                    <span id="moves-count" class="stat-value">0</span>
-                </div>
-                <div class="stat-item">
-                    <span class="stat-label">Matches:</span>
-                    <span id="matches-count" class="stat-value">0</span>
-                </div>
-            </div>
-        </header>
-
-        <!-- Character Area -->
-        <div class="character-area">
-            <div id="character-container" class="character-container">
-                <div id="main-character" class="main-character">
-                    <div class="character-sprite">🐱</div>
-                    <div class="character-speech-bubble" id="speech-bubble">
-                        <p>Let's find matching pairs!</p>
-                    </div>
-                </div>
-            </div>
+      <!-- Header -->
+      <header class="game-header">
+        <h1 class="game-title">🐾 Animal Memory Adventure</h1>
+        <div class="game-stats">
+          <div class="stat-item">
+            <span class="stat-label">Stage:</span>
+            <span id="current-stage" class="stat-value">1</span>
+          </div>
+          <div class="stat-item">
+            <span class="stat-label">Moves:</span>
+            <span id="moves-count" class="stat-value">0</span>
+          </div>
+          <div class="stat-item">
+            <span class="stat-label">Matches:</span>
+            <span id="matches-count" class="stat-value">0</span>
+          </div>
+          <div class="top-left-username">Made by : Bagus Wicaksono 👋</div>
         </div>
+      </header>
 
-        <!-- Game Board -->
-        <div class="game-board-container">
-            <div id="game-board" class="game-board">
-                <!-- Cards will be dynamically generated here -->
+      <!-- Character Area -->
+      <div class="character-area">
+        <div id="character-container" class="character-container">
+          <div id="main-character" class="main-character">
+            <div class="character-sprite">🐱</div>
+            <div class="character-speech-bubble" id="speech-bubble">
+              <p>Ayo cari pasangan gambar yang sama!</p>
             </div>
+          </div>
         </div>
+      </div>
 
-        <!-- Game Controls -->
-        <div class="game-controls">
-            <button id="restart-btn" class="control-btn restart-btn">
-                🔄 Restart Stage
+      <!-- Game Board -->
+      <div class="game-board-container">
+        <div id="game-board" class="game-board">
+          <!-- Cards will be dynamically generated here -->
+        </div>
+      </div>
+
+      <!-- Game Controls -->
+      <div class="game-controls">
+        <button id="restart-btn" class="control-btn restart-btn">
+          🔄 Restart Stage
+        </button>
+        <button id="theme-btn" class="control-btn theme-btn">
+          🎨 Change Theme
+        </button>
+        <button id="sound-btn" class="control-btn sound-btn">
+          🔊 Sound On
+        </button>
+      </div>
+
+      <!-- Theme Selection Modal -->
+      <div id="theme-modal" class="modal hidden">
+        <div class="modal-content">
+          <h3>Choose Your Theme</h3>
+          <div class="theme-options">
+            <button class="theme-option" data-theme="animals">
+              🐾 Animals
             </button>
-            <button id="theme-btn" class="control-btn theme-btn">
-                🎨 Change Theme
+            <button class="theme-option" data-theme="fruits">🍎 Fruits</button>
+            <button class="theme-option" data-theme="vehicles">
+              🚗 Vehicles
             </button>
-            <button id="sound-btn" class="control-btn sound-btn">
-                🔊 Sound On
-            </button>
+            <button class="theme-option" data-theme="nature">🌿 Nature</button>
+          </div>
+          <button id="close-theme-modal" class="close-modal-btn">Close</button>
         </div>
+      </div>
 
-        <!-- Theme Selection Modal -->
-        <div id="theme-modal" class="modal hidden">
-            <div class="modal-content">
-                <h3>Choose Your Theme</h3>
-                <div class="theme-options">
-                    <button class="theme-option" data-theme="animals">
-                        🐾 Animals
-                    </button>
-                    <button class="theme-option" data-theme="fruits">
-                        🍎 Fruits
-                    </button>
-                    <button class="theme-option" data-theme="vehicles">
-                        🚗 Vehicles
-                    </button>
-                    <button class="theme-option" data-theme="nature">
-                        🌿 Nature
-                    </button>
-                </div>
-                <button id="close-theme-modal" class="close-modal-btn">Close</button>
-            </div>
+      <!-- Stage Complete Modal -->
+      <div id="stage-complete-modal" class="modal hidden">
+        <div class="modal-content celebration">
+          <div class="celebration-character">🎉</div>
+          <h2>Stage Complete!</h2>
+          <p id="stage-complete-message">
+            Kerja bagus !, siap untuk stage selanjutnya?
+          </p>
+          <div class="celebration-stats">
+            <p>Moves: <span id="final-moves">0</span></p>
+            <p>Time: <span id="final-time">0:00</span></p>
+          </div>
+          <button id="next-stage-btn" class="next-stage-btn">
+            ➡️ Next Stage
+          </button>
         </div>
+      </div>
 
-        <!-- Stage Complete Modal -->
-        <div id="stage-complete-modal" class="modal hidden">
-            <div class="modal-content celebration">
-                <div class="celebration-character">🎉</div>
-                <h2>Stage Complete!</h2>
-                <p id="stage-complete-message">Great job! Ready for the next challenge?</p>
-                <div class="celebration-stats">
-                    <p>Moves: <span id="final-moves">0</span></p>
-                    <p>Time: <span id="final-time">0:00</span></p>
-                </div>
-                <button id="next-stage-btn" class="next-stage-btn">
-                    ➡️ Next Stage
-                </button>
-            </div>
+      <!-- Game Complete Modal -->
+      <div id="game-complete-modal" class="modal hidden">
+        <div class="modal-content celebration">
+          <div class="celebration-character">🏆</div>
+          <h2>Selamat !</h2>
+          <p>Kamu telah menyelesaikan 10 stage!</p>
+          <div class="final-celebration">
+            <div class="fireworks">🎆</div>
+            <p>You are a Memory Master!</p>
+          </div>
+          <button id="play-again-btn" class="play-again-btn">
+            🎮 Main Lagi
+          </button>
         </div>
+      </div>
 
-        <!-- Game Complete Modal -->
-        <div id="game-complete-modal" class="modal hidden">
-            <div class="modal-content celebration">
-                <div class="celebration-character">🏆</div>
-                <h2>Congratulations!</h2>
-                <p>You've completed all 10 stages!</p>
-                <div class="final-celebration">
-                    <div class="fireworks">🎆</div>
-                    <p>You are a Memory Master!</p>
-                </div>
-                <button id="play-again-btn" class="play-again-btn">
-                    🎮 Play Again
-                </button>
-            </div>
+      <!-- Loading Screen -->
+      <div id="loading-screen" class="loading-screen hidden">
+        <div class="loading-content">
+          <div class="loading-spinner">🐾</div>
+          <p>Loading next stage...</p>
         </div>
-
-        <!-- Loading Screen -->
-        <div id="loading-screen" class="loading-screen hidden">
-            <div class="loading-content">
-                <div class="loading-spinner">🐾</div>
-                <p>Loading next stage...</p>
-            </div>
-        </div>
+      </div>
     </div>
 
     <!-- Audio Elements -->
     <audio id="flip-sound" preload="auto">
-        <source src="assets/sounds/flip.mp3" type="audio/mpeg">
+      <source src="assets/sounds/flip.mp3" type="audio/mpeg" />
     </audio>
     <audio id="match-sound" preload="auto">
-        <source src="assets/sounds/match.mp3" type="audio/mpeg">
+      <source src="assets/sounds/match.mp3" type="audio/mpeg" />
     </audio>
     <audio id="celebration-sound" preload="auto">
-        <source src="assets/sounds/celebration.mp3" type="audio/mpeg">
+      <source src="assets/sounds/celebration.mp3" type="audio/mpeg" />
     </audio>
     <audio id="stage-complete-sound" preload="auto">
-        <source src="assets/sounds/stage-complete.mp3" type="audio/mpeg">
+      <source src="assets/sounds/stage-complete.mp3" type="audio/mpeg" />
     </audio>
 
     <script src="js/game.js"></script>
-</body>
+  </body>
 </html>
-
