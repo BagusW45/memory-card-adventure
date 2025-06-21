@@ -5,7 +5,7 @@ Memory Card Game adalah permainan mencocokkan kartu berbasis web yang dirancang 
 
 ## Technologies Used
 - **HTML** – untuk struktur halaman
-- **CSS + TailwindCSS** – untuk desain dan styling yang responsif
+- **CSS** – untuk desain dan styling yang responsif
 - **JavaScript** – untuk logika permainan dan interaksi
 - **Netlify** – untuk proses deployment dan hosting
 - **IBM Granite AI** – untuk membantu proses pengembangan
